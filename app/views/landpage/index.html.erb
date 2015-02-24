@@ -1,0 +1,35 @@
+<!-- <h1>Landpage#index</h1>
+<p>Find me in app/views/landpage/index.html.erb</p> -->
+
+<center>
+<div class="jumbotron">
+<h1>WELCOME TO THE MOVIE-ACTOR DATABASE!</h1>
+<hr>
+
+<h2><%= link_to "ACTORS", actors_path, :class=>"btn btn-info btn-lg" %></h2>
+
+<h2><%= link_to "MOVIES", movies_path, :class=>"btn btn-info btn-lg"  %></h2>
+</div>
+</center>
+
+
+<div class="row">
+  <div class="col-sm-6">
+    <ul>
+      <% @movies.each do |film| %>
+      <li><%= link_to "#{film.title} (#{film.year})", film %></li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="col-sm-6">
+    <ul>
+      <% @actors.each do |actor| %>
+      <li><%= link_to "#{actor.name}", actor %></li>
+      <% end %>
+    </ul>
+  </div>
+
+
+
+</div>
