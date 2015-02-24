@@ -9,6 +9,29 @@
 <%= link_to "Edit", edit_actor_path(@actor), :class=>"btn btn-warning btn-lg" %>
 <%= button_to "Delete", movie_path(@actor), :method => :delete, :class=>"btn btn-danger btn-lg" %>
 <hr>
-<%= link_to "Add actor to movie", %>
 
-<%= link_to "Back to actors", actors_path %>
+<div>
+  <h2>Movies</h2>
+  <ul>
+    <% @actor.movies.each do |role| %>
+    <li>
+      <%= link_to "#{role.title} (#{role.year})", movie_path(role) %>
+      <%= button_to "X", remove_movie_path(@actor, role), :method => :delete %>
+    </li>
+    <% end %>
+  </ul>
+  <%= form_tag add_movie_path do |f|%>
+    <select name="movie_id">
+      <% @movies.each do |flick| %>
+      <option value="<%=flick.id%>"><%=flick.title %></option>
+      <% end %>
+    </select>
+    <input type="submit" value="Add" class="btn btn-success btn-lg">
+  <% end %>
+</div>
+
+
+
+<hr>
+<%= link_to "Back to actors", actors_path, :class=>"btn btn-primary btn-lg"  %>
+

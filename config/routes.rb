@@ -8,6 +8,18 @@ Rails.application.routes.draw do
 
   resources :actors
 
+  # post '/actors/:id/movies/:movie_id', to: 'actors#addactor'
+
+  # post '/movies/:id/actors/:actor_id', to: 'movies#addmovie'
+
+post '/movies/:id/actors/new' => 'movies#add_actor', as: :add_actor
+
+delete 'movies/:id/actors/:actor_id' => 'movies#remove_actor', as: :remove_actor
+
+post '/actors/:id/movies/new' => 'actors#add_movie', as: :add_movie
+
+delete '/actors/:id/movies/:movie_id' => 'actors#remove_movie', as: :remove_movie
+
 #    Prefix Verb   URI Pattern                Controller#Action
 # landpage_index GET    /landpage/index(.:format)  landpage#index
 #     movies GET    /movies(.:format)          movies#index

@@ -7,3 +7,21 @@
 <br><br>
 
 <%= link_to "Back to movies", movies_path %>
+
+
+<%= form_for @actor, url: add_actor_path(@movie) do |f| %>
+
+  <%= f.label "Add Actor to Movie " %>
+  <%= f.text_field :name, list: "actor_names" %>
+  <datalist id="actor_names">
+    <% @actors.each do |actor| %>
+      <option><%= actor.name %></option>
+    <% end %>
+  </datalist>
+  <%= f.submit "Add" %>
+
+<% end %>
+
+
+
+
