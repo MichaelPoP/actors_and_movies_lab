@@ -1,27 +1,30 @@
-<h1><%= @movie.title %></h1>
+<center>
+<h1 class="smcap"><%= @movie.title %></h1>
 
-<p><%= @movie.year %></p>
+<h3 class="list"><%= @movie.year %></h3>
 
-<div class="black-box">
+<div class="box">
   <h2>Actors</h2>
-  <ul>
+  
     <% @movie.actors.each do |actor| %>
-    <li>
+    <h3 class="list">
       <%= link_to actor.name, actor %>
-      <%= button_to "X", remove_actor_path(@movie, actor), :method => :delete %>
-    </li>
+      <%= button_to "X", remove_actor_path(@movie, actor), :method => :delete, :class=>" leftmar btn btn-danger btn-large" %>
+    </h3>
     <% end %>
-  </ul>
+  
   <% unless @actors.empty? %>
     <%= form_tag add_actor_path(@movie) do %>
       <%= collection_select :actor, :id, @actors, :id, :name %>
-      <%= submit_tag "Add" %>
+      <%= submit_tag "Add", :class=>" leftmar btn btn-success btn-large" %>
     <% end %>
   <% end %>
 </div>
-
-<%= link_to "Edit", edit_movie_path(@movie) %>
-<%= button_to "Delete", movie_path(@movie), :method => :delete %>
+<div class="tpmar">
+<%= link_to "Edit", edit_movie_path(@movie), :class=>" leftmar btn btn-warning btn-large" %>
+<%= button_to "Delete", movie_path(@movie), :method => :delete, :class=>" leftmar btn btn-danger btn-large" %>
 <br><br>
 
-<%= link_to "Back to movies", movies_path %>
+<%= link_to "Back to movies", movies_path, :class=>" leftmar btn btn-primary btn-large" %>
+</center>
+</div>

@@ -1,11 +1,16 @@
-<h1>Actors</h1>
+<center>
+<div class="box">
+<h1 class="smcap">Actors</h1>
 
-<ul>
+
   <% @actors.each do |star| %>
-  <li><%= link_to star.name, actor_path(star) %></li>
+  <h3 class="list"><%= link_to star.name, actor_path(star) %></h3>
   <% end %>
-</ul>
 
-<%= link_to "Add new actor", new_actor_path %>
+
+<%= link_to "Add new actor", new_actor_path, :class=>" leftmar btn btn-success btn-large"%>
 <br><br>
-<%= link_to "Back to home", root_path %>
+<%= link_to "Back to home", root_path, :class=>" leftmar btn btn-primary btn-large" %>
+
+</center>
+</div>

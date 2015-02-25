@@ -5,8 +5,56 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+<% flash.each do |key, value| %>
+  <% if key == "notice" %>
+    <%= content_tag :div, value, class: "text-center alert alert-warning" %>
+  <% elsif key == "alert" %>
+    <%= content_tag :div, value, class: "text-center alert alert-danger" %>
+  <% else %>
+    <%= content_tag :div, value, class: "text-center alert alert-success" %>
+  <% end %>
+<% end %>
+<style>
+.back {
+  background: #636494;
+}
+.smcap {
+  font-variant: small-caps;
+  text-shadow: 1px 1px 4px #567dcb;
+}
+.list {
+  text-shadow:1px 1px 2px black;
+}
+.lgfont {
+  font-size: 30px;
+}
+.box {
+  background: #b0adb1;
+  padding: 8px;
+  width:50%;
+  border: 1px inset white;
+  margin-top: 10px;
+}
+.tpmar {
+  margin-top: 10px;
+}
+.film {
+  background-image: url("/film.jpg");
+}
+</style>
+
+
 </head>
-<body>
+<body class=" back container-fluid">
 
 <%= yield %>
 
