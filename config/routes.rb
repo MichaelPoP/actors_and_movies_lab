@@ -1,6 +1,28 @@
 Rails.application.routes.draw do
 
-root 'site#index'
+
+
+
+
+  root 'access#login'
+  
+  get 'site', to: "site#index", as: 'site'
+
+  get 'login', to: "access#login", as: 'login'
+
+  get 'signup', to: "access#signup", as: 'signup'
+
+  get 'wrong_login', to: "wrongpaths#wrong_login", as:'wrong'
+
+  post 'login', to: "access#attempt_login"
+
+  post 'signup', to: "access#create"
+
+  get 'home', to: "access#home", as: 'home'
+
+  delete 'logout', to: "access#logout", as: "logout"
+
+
 
   # resources :movies do
   #   resources :comments
@@ -31,6 +53,59 @@ root 'site#index'
   delete '/actors/:id/movies/:movie_id' => 'actors#remove_movie', as: :remove_movie
 
 
+
+
+#  Prefix Verb   URI Pattern                              Controller#Action
+#           root GET    /                                        access#login
+#           site GET    /site(.:format)                          site#index
+#          login GET    /login(.:format)                         access#login
+#         signup GET    /signup(.:format)                        access#signup
+#          wrong GET    /wrong_login(.:format)                   wrongpaths#wrong_login
+#                POST   /login(.:format)                         access#attempt_login
+#                POST   /signup(.:format)                        access#create
+#           home GET    /home(.:format)                          access#home
+#         logout DELETE /logout(.:format)                        access#logout
+# movie_comments POST   /movies/:movie_id/comments/new(.:format) comments#create
+#   movie_remove DELETE /movies/:movie_id/comments/:id(.:format) comments#destroy
+#         movies GET    /movies(.:format)                        movies#index
+#                POST   /movies(.:format)                        movies#create
+#      new_movie GET    /movies/new(.:format)                    movies#new
+#     edit_movie GET    /movies/:id/edit(.:format)               movies#edit
+#          movie GET    /movies/:id(.:format)                    movies#show
+#                PATCH  /movies/:id(.:format)                    movies#update
+#                PUT    /movies/:id(.:format)                    movies#update
+#                DELETE /movies/:id(.:format)                    movies#destroy
+# actor_comments POST   /actors/:actor_id/comments/new(.:format) comments#create
+#   actor_remove DELETE /actors/:actor_id/comment/:id(.:format)  comments#destroy
+#         actors GET    /actors(.:format)                        actors#index
+#                POST   /actors(.:format)                        actors#create
+#      new_actor GET    /actors/new(.:format)                    actors#new
+#     edit_actor GET    /actors/:id/edit(.:format)               actors#edit
+#          actor GET    /actors/:id(.:format)                    actors#show
+#                PATCH  /actors/:id(.:format)                    actors#update
+#                PUT    /actors/:id(.:format)                    actors#update
+#                DELETE /actors/:id(.:format)                    actors#destroy
+#      add_actor POST   /movies/:id/actors/new(.:format)         movies#add_actor
+#   remove_actor DELETE /movies/:id/actors/:actor_id(.:format)   movies#remove_actor
+#      add_movie POST   /actors/:id/movies/new(.:format)         actors#add_movie
+#   remove_movie DELETE /actors/:id/movies/:movie_id(.:format)   actors#remove_movie
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #    Prefix Verb   URI Pattern                              Controller#Action
 #           root GET    /                                        site#index
 # movie_comments POST   /movies/:movie_id/comments/new(.:format) comments#create
@@ -59,7 +134,18 @@ root 'site#index'
 #   remove_movie DELETE /actors/:id/movies/:movie_id(.:format)   actors#remove_movie
 
 
+# root 'site#index'
+#   get 'wrongpath/wronglogin'
 
+#   get 'wrongpath/wrongsignup'
+
+#   get 'access/home'
+
+#   get 'access/login'
+
+#   get 'access/signup'
+
+#   get 'access/logout'
 
 
 

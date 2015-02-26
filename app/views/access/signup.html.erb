@@ -1,0 +1,25 @@
+<div class="container-fluid">
+<center>
+<div class="pad login">
+
+<h1 class="title">Welcome to BDMI. </h1>
+<h2>Please take a moment to Signup.</h2>
+</center>
+<center>
+<%= simple_form_for(@user, url: signup_path) do |f|%>
+  <p>
+    <%= f.input(:username, autofocus: true) %>
+  </p>
+  <p>
+    <%= f.input(:password, required: true) %>
+  </p>
+  <br>
+  <p>
+    <%= f.button(:submit, "Signup", :class=>"btn btn-primary btn-large") %>
+  </p>
+    <%= link_to "Return to login", login_path, :class=>"btn btn-danger btn-large"%>
+<% end %>
+
+</div>
+</center>
+</div>

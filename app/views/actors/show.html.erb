@@ -28,15 +28,30 @@
 <!--  FOR COMMENTS -->
 <div class="combox">
 <h2> Comments:</h2>
+<center>
+<table class="right pad table table-bordered table-hover">
+<thead>
+  <tr class="info">
+    <th>comment</th>
+    <th>updated</th>
+    <th></th>
+  </tr>
+</thead>
+<tbody>
 <% @comments.each do |comment| %>
+  <tr>
+  <h4>
+    <td><%= comment.content %></td>
+    <td><%= comment.updated_at  %></td> 
+    <td><%= button_to "X", actor_remove_path(@actor, comment), :method => :delete, :class=>" btn btn-danger btn-large" %></td>
+  </h4>
 
-<hr>
-    <h4>
-    <%= comment.content %>
-    <%= button_to "X", actor_remove_path(@actor, comment), :method => :delete, :class=>" btn btn-danger btn-large" %>
-    </h4>
+  </tr>
+
   <% end %>
-<hr>
+</tbody>
+</table>
+</center>
 </div>
 
 
