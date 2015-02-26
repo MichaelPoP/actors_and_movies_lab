@@ -19,6 +19,7 @@ class MoviesController < ApplicationController
 
   def show
     @actors = Actor.all - @movie.actors
+    @comments = @movie.comments
   end
 
   def update
@@ -43,6 +44,24 @@ class MoviesController < ApplicationController
     @movie.actors.delete(Actor.find(params[:actor_id]))
     redirect_to @movie 
   end
+
+
+
+
+  # def create 
+  #   @commentable = find_commentable
+  #   @comment = @commentable.comments.build(params[:comment])
+  #   if @comment.save
+  #     flash[:notice] = "Successfully saved comment."
+  #     redirect_to :id => nil
+  #   else
+  #     render :action => 'new'
+  #   end
+  # end
+
+
+
+
 
   private
   def movie_params

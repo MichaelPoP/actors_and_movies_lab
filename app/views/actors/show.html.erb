@@ -20,9 +20,41 @@
 </div>
 <div class="tpmar">
 <%= link_to "Edit", edit_actor_path(@actor), :class=>" leftmar btn btn-warning btn-large" %>
-<%= button_to "Delete", actor_path(@actor), :method => :delete, :class=>" leftmar btn btn-danger btn-large" %>
+<%= button_to "Delete", actor_path(@actor), :method => :delete, :class=>" btn btn-danger btn-large" %>
 <br><br>
 
-<%= link_to "Back to actors", actors_path, :class=>" leftmar btn btn-primary btn-large" %>
+<%= link_to "Back to actors", actors_path, :class=>" botmarsm btn btn-primary btn-large" %>
+
+<!--  FOR COMMENTS -->
+<div class="combox">
+<h2> Comments:</h2>
+<% @comments.each do |comment| %>
+
+<hr>
+    <h4>
+    <%= comment.content %>
+    <%= button_to "X", actor_remove_path(@actor, comment), :method => :delete, :class=>" btn btn-danger btn-large" %>
+    </h4>
+  <% end %>
+<hr>
+</div>
+
+
+<h2>New Comment</h2>
+<%= form_for :comment, url: actor_comments_path(@actor)  do |comm| %>
+      
+    <%= comm.text_area :content, :rows => 5, :cols => 30%>
+    <br>
+    <%= submit_tag "Add comment", :class=>" botmar btn btn-success btn-large" %>
+  
+<% end %>
+
+
+
+
+
+
+
+
 </center>
 </div>
