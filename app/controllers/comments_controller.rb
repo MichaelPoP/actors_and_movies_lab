@@ -16,9 +16,9 @@ class CommentsController < ApplicationController
   def create
    
     # @movie = Movie.find(params[:movie_id])
-    @commentable = find_commentable
+    # @commentable = find_commentable
     # binding.pry
-    @comment = @commentable.comments.build(comment_params)
+    @comment = find_commentable.comments.build(comment_params)
     
     if @comment.save
       flash[:success] = "Congrats! You Added A Comment Bro."    

@@ -28,7 +28,7 @@
 <%= link_to "Back to movies", movies_path, :class=>" botmarsm btn btn-primary btn-large" %>
 
 <!--  FOR COMMENTS -->
-<div class="pad combox">
+<div class="combox">
 <h3> Comments: </h3>
 <center>
 <table class="right pad table table-bordered table-hover">
@@ -44,7 +44,7 @@
   <tr>
   <h4>
     <td><%= comment.content %></td>
-    <td><%= comment.updated_at  %></td> 
+    <td><%= time_ago_in_words comment.created_at  %></td> 
     <td><%= button_to "X", movie_remove_path(@movie, comment), :method => :delete, :class=>" btn btn-danger btn-large" %></td>
   </h4>
 

@@ -1,6 +1,6 @@
 class ActorsController < ApplicationController
   before_action :find_actor, only: [:edit, :show, :update, :destroy, :add_movie, :remove_movie]
-
+  before_action :find_entity, only: [:edit, :show, :update, :destroy, :add_movie, :remove_movie]
   def index
     @actors = Actor.all
   end

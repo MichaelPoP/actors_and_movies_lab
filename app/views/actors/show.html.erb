@@ -42,7 +42,7 @@
   <tr>
   <h4>
     <td><%= comment.content %></td>
-    <td><%= comment.updated_at  %></td> 
+    <td><%= time_ago_in_words comment.created_at  %></td> 
     <td><%= button_to "X", actor_remove_path(@actor, comment), :method => :delete, :class=>" btn btn-danger btn-large" %></td>
   </h4>
 

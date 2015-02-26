@@ -5,17 +5,22 @@ class AccessController < ApplicationController
     if params[:username].present? && params[:password].present?
       found_user = User.where(username: params[:username]).first
       if found_user
-
         authorized_user = found_user.authenticate(params[:password])
-      
-        if authorized_user
-          redirect_to site_path, flash: {success: "LOGGED IN."}
-        end
-      else 
-         flash[:alert] = "No Comment for You"  
       end
     end
+      
+    if !found_user
+      flash.now[:alert] = "Invalid username"
+      render :login
+    elsif !authorized_user
+      flash.now[:alert] = "Invalid password"
+      render :login
+    else
+      session[:user_id] = authorized_user.id
+      redirect_to site_path, flash: {success: "LOGGED IN."} 
+    end
   end
+
 
 
   def home
@@ -62,3 +67,42 @@ class AccessController < ApplicationController
 
 
 end 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ # def attempt_login
+ #    if params[:username].present? && params[:password].present?
+ #      found_user = User.where(username: params[:username]).first
+ #      if found_user
+
+ #        authorized_user = found_user.authenticate(params[:password])
+      
+ #        if authorized_user
+ #          redirect_to site_path, flash: {success: "LOGGED IN."}
+ #        end
+ #      else 
+ #         flash[:alert] = "No Comment for You"  
+ #      end
+ #    end
+ #  end
